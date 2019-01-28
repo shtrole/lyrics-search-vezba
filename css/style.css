@@ -1,0 +1,39 @@
+body {
+	background-color: black;
+    background-image: url('../images/bg.jpg'); 
+    background-repeat: no-repeat;   
+    color: white;
+    text-shadow: 2px -2px 2px rgba(0,0,0,1);    
+    position: relative;
+}
+.container {	   
+    max-width: 100%;  
+    margin: auto; 
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+}
+
+#pretraga {
+	padding: 200px 50px 100px 100px;
+	margin: 20px;	
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+}
+
+input {
+	width: 100%;
+	border-radius: .25rem;
+	border: 1px solid transparent;
+}
+
+#dugme {
+    margin-top: 40px;
+}
+
+::placeholder {
+	font-style: italic;
+}
