@@ -28,3 +28,26 @@ forma.addEventListener('submit', function(event){
     event.preventDefault();
     ucitajPodatke();
 });
+const dugme = document.getElementById('dugme');
+const trazeniPojam = document.getElementById('trazeni-izvodjac');
+const drzacZaClanak = document.getElementById('drzac-za-clanak');
+const naslov = document.getElementById('naslov');
+
+function wikiTekst() {
+    const trazenaRec = trazeniPojam.value;
+    const url = `https://en.wikipedia.org/w/api.php?action=query&titles=${trazenaRec}&prop=extracts|pageimages|info&pithumbsize=400&inprop=url&redirects=&format=json&origin=*`;
+    drzacZaClanak.innerHTML = '';
+
+    fetch(url)
+        .then(response => response.json())
+        .then(podatak => {
+            const pages = podatak.query.pages;           
+            const clanak = Object.values(pages)[0];
+            naslov.innerText = clanak.title;
+            const imgSrc = clanak.thumbnail.source;
+            drzacZaClanak.innerHTML += `<img src="${imgSrc}" alt="${clanak.title}">`;
+            drzacZaClanak.innerHTML += clanak.extract;
+        })
+}
+
+dugme.addEventListener('click', wikiTekst);
